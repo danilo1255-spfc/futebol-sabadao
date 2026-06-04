@@ -18,7 +18,7 @@ const PLAYERS = [
   { name: "Renan", pos: "goleiro" },
 ]
 
-const COLORS = { gols:'#00c853', assistencias:'#4fc3f7', dribles:'#ffe082', entregadas:'#ff6b6b', defesas:'#ce93d8' }
+const COLORS = { gols:'#00c853', assistencias:'#4fc3f7', dribles:'#ffe082', entregadas:'#ff6b6b', defesas:'#ff3333' }
 const LABELS = { gols:'Gols', assistencias:'Assist.', dribles:'Dribles', entregadas:'Entregadas', defesas:'Defesas' }
 
 export default function Estatisticas() {
@@ -54,16 +54,16 @@ export default function Estatisticas() {
     : ['gols','assistencias','dribles','entregadas']
 
   return (
-    <div style={{minHeight:'100vh',background:'#1a0d2e',fontFamily:"'DM Sans',sans-serif",color:'#f0f4f0',paddingBottom:48}}>
-      <div style={{background:'linear-gradient(160deg,#1a0828,#2d0f4a)',borderBottom:'3px solid #ce93d8',padding:'24px 20px 18px',textAlign:'center'}}>
+    <div style={{minHeight:'100vh',background:'#1a0000',fontFamily:"'DM Sans',sans-serif",color:'#f0f4f0',paddingBottom:48}}>
+      <div style={{background:'linear-gradient(160deg,#2a0000,#4a0a0a)',borderBottom:'3px solid #ff3333',padding:'24px 20px 18px',textAlign:'center'}}>
         <div style={{fontSize:'2rem'}}>🏆</div>
         <div style={{fontSize:'2rem',fontWeight:900,letterSpacing:3,textTransform:'uppercase'}}>Ranking</div>
-        <div style={{fontSize:'0.78rem',color:'#a07ab0',letterSpacing:'1.5px',textTransform:'uppercase',marginTop:4}}>Estatisticas 2026</div>
+        <div style={{fontSize:'0.78rem',color:'#c07070',letterSpacing:'1.5px',textTransform:'uppercase',marginTop:4}}>Estatisticas 2026</div>
       </div>
 
       <div style={{maxWidth:480,margin:'16px auto 0',padding:'0 16px',display:'flex',gap:8}}>
         {[{k:'ranking',l:'🏆 Ranking'},{k:'lancar',l:'✏️ Lancar'}].map(v=>(
-          <button key={v.k} onClick={()=>{setView(v.k);setSelected(null)}} style={{flex:1,padding:'10px',borderRadius:12,border:'none',background:view===v.k?'#ce93d8':'rgba(255,255,255,0.06)',color:view===v.k?'#000':'#a07ab0',fontWeight:700,fontSize:'0.88rem',cursor:'pointer'}}>
+          <button key={v.k} onClick={()=>{setView(v.k);setSelected(null)}} style={{flex:1,padding:'10px',borderRadius:12,border:'none',background:view===v.k?'#ff3333':'rgba(255,255,255,0.06)',color:view===v.k?'#fff':'#c07070',fontWeight:700,fontSize:'0.88rem',cursor:'pointer'}}>
             {v.l}
           </button>
         ))}
@@ -73,21 +73,21 @@ export default function Estatisticas() {
         <div style={{maxWidth:480,margin:'14px auto 0',padding:'0 16px'}}>
           <div style={{display:'flex',gap:6,flexWrap:'wrap',marginBottom:12}}>
             {['gols','assistencias','dribles','defesas','entregadas'].map(s=>(
-              <button key={s} onClick={()=>setRanking(s)} style={{padding:'5px 12px',borderRadius:20,border:'none',background:ranking===s?COLORS[s]:'rgba(255,255,255,0.06)',color:ranking===s?'#000':'#a07ab0',fontWeight:700,fontSize:'0.72rem',cursor:'pointer'}}>
+              <button key={s} onClick={()=>setRanking(s)} style={{padding:'5px 12px',borderRadius:20,border:'none',background:ranking===s?COLORS[s]:'rgba(255,255,255,0.06)',color:ranking===s?'#000':'#c07070',fontWeight:700,fontSize:'0.72rem',cursor:'pointer'}}>
                 {LABELS[s]}
               </button>
             ))}
           </div>
           {ranked.length === 0 ? (
-            <div style={{textAlign:'center',padding:'40px',color:'#a07ab0'}}>Nenhuma estatistica ainda. Use Lancar!</div>
+            <div style={{textAlign:'center',padding:'40px',color:'#c07070'}}>Nenhuma estatistica ainda. Use Lancar!</div>
           ) : ranked.map((p,i) => (
-            <div key={p.name} style={{background:'rgba(255,255,255,0.04)',border:'1.5px solid '+(i===0?COLORS[ranking]+'66':'rgba(255,255,255,0.07)'),borderRadius:14,padding:'12px 14px',display:'flex',alignItems:'center',gap:12,marginBottom:8}}>
-              <div style={{width:32,height:32,borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:900,background:i===0?'rgba(255,215,0,0.15)':i===1?'rgba(192,192,192,0.1)':i===2?'rgba(205,127,50,0.1)':'rgba(255,255,255,0.05)',color:i===0?'#ffd700':i===1?'#c0c0c0':i===2?'#cd7f32':'#a07ab0'}}>
+            <div key={p.name} style={{background:'rgba(255,50,50,0.06)',border:'1.5px solid '+(i===0?'rgba(255,50,50,0.4)':'rgba(255,255,255,0.07)'),borderRadius:14,padding:'12px 14px',display:'flex',alignItems:'center',gap:12,marginBottom:8}}>
+              <div style={{width:32,height:32,borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:900,background:i===0?'rgba(255,215,0,0.15)':i===1?'rgba(192,192,192,0.1)':i===2?'rgba(205,127,50,0.1)':'rgba(255,255,255,0.05)',color:i===0?'#ffd700':i===1?'#c0c0c0':i===2?'#cd7f32':'#c07070'}}>
                 {i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}
               </div>
               <div style={{flex:1}}>
                 <div style={{fontWeight:700}}>{p.name}</div>
-                <div style={{fontSize:'0.7rem',color:'#a07ab0'}}>{p.pos==='goleiro'?'Goleiro':'Linha'}</div>
+                <div style={{fontSize:'0.7rem',color:'#c07070'}}>{p.pos==='goleiro'?'Goleiro':'Linha'}</div>
               </div>
               <div style={{fontWeight:900,fontSize:'1.8rem',color:COLORS[ranking],lineHeight:1}}>{p.val}</div>
             </div>
@@ -97,9 +97,9 @@ export default function Estatisticas() {
 
       {view === 'lancar' && !selected && (
         <div style={{maxWidth:480,margin:'14px auto 0',padding:'0 16px'}}>
-          <div style={{fontSize:'0.7rem',color:'#a07ab0',textTransform:'uppercase',marginBottom:10}}>Selecione o jogador</div>
+          <div style={{fontSize:'0.7rem',color:'#c07070',textTransform:'uppercase',marginBottom:10}}>Selecione o jogador</div>
           {PLAYERS.map(p => (
-            <div key={p.name} onClick={()=>setSelected(p.name)} style={{background:'rgba(255,255,255,0.05)',border:'1px solid rgba(255,255,255,0.08)',borderRadius:12,padding:'12px 14px',display:'flex',alignItems:'center',gap:10,cursor:'pointer',marginBottom:6}}>
+            <div key={p.name} onClick={()=>setSelected(p.name)} style={{background:'rgba(255,50,50,0.06)',border:'1px solid rgba(255,255,255,0.08)',borderRadius:12,padding:'12px 14px',display:'flex',alignItems:'center',gap:10,cursor:'pointer',marginBottom:6}}>
               <div>{p.pos==='goleiro'?'🧤':'⚽'}</div>
               <div style={{fontWeight:700}}>{p.name}</div>
               <div style={{marginLeft:'auto',display:'flex',gap:6}}>
@@ -114,17 +114,17 @@ export default function Estatisticas() {
 
       {view === 'lancar' && selected && (
         <div style={{maxWidth:480,margin:'14px auto 0',padding:'0 16px'}}>
-          <button onClick={()=>setSelected(null)} style={{background:'transparent',border:'none',color:'#a07ab0',cursor:'pointer',marginBottom:12}}>← Voltar</button>
-          <div style={{background:'rgba(206,147,216,0.08)',border:'1.5px solid rgba(206,147,216,0.25)',borderRadius:14,padding:'14px',marginBottom:12,display:'flex',alignItems:'center',gap:12}}>
+          <button onClick={()=>setSelected(null)} style={{background:'transparent',border:'none',color:'#c07070',cursor:'pointer',marginBottom:12}}>← Voltar</button>
+          <div style={{background:'rgba(255,50,50,0.08)',border:'1.5px solid rgba(255,50,50,0.3)',borderRadius:14,padding:'14px',marginBottom:12,display:'flex',alignItems:'center',gap:12}}>
             <div style={{fontSize:'1.6rem'}}>{player?.pos==='goleiro'?'🧤':'⚽'}</div>
             <div style={{fontWeight:800,fontSize:'1.1rem'}}>{selected}</div>
             {saved && <div style={{marginLeft:'auto',color:'#00c853',fontWeight:700}}>✓ Salvo!</div>}
           </div>
           {pstats.map(stat => (
-            <div key={stat} style={{background:'rgba(255,255,255,0.04)',border:'1px solid rgba(255,255,255,0.08)',borderRadius:12,padding:'14px 16px',display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:8}}>
+            <div key={stat} style={{background:'rgba(255,50,50,0.06)',border:'1px solid rgba(255,255,255,0.08)',borderRadius:12,padding:'14px 16px',display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:8}}>
               <div>
                 <div style={{fontWeight:700,color:COLORS[stat]}}>{LABELS[stat]}</div>
-                <div style={{fontSize:'0.68rem',color:'#a07ab0',marginTop:2}}>Total: {getStat(selected,stat)}</div>
+                <div style={{fontSize:'0.68rem',color:'#c07070',marginTop:2}}>Total: {getStat(selected,stat)}</div>
               </div>
               <div style={{display:'flex',alignItems:'center',gap:8}}>
                 <button onClick={()=>addStat(selected,stat,-1)} style={{width:36,height:36,borderRadius:10,border:'none',background:'rgba(255,107,107,0.15)',color:'#ff6b6b',fontSize:'1.3rem',fontWeight:700,cursor:'pointer'}}>−</button>
