@@ -10,7 +10,7 @@ export default function App() {
         <button onClick={()=>setTab('presenca')} style={{flex:1,padding:'12px 4px',border:'none',background:'transparent',color:tab==='presenca'?'#fff':'#7a9ab0',fontSize:'0.78rem',fontWeight:700,cursor:'pointer',borderBottom:tab==='presenca'?'3px solid #4fc3f7':'3px solid transparent'}}>
           Presenca
         </button>
-        <button onClick={()=>setTab('estatisticas')} style={{flex:1,padding:'12px 4px',border:'none',background:'transparent',color:tab==='estatisticas'?'#fff':'#7a9ab0',fontSize:'0.78rem',fontWeight:700,cursor:'pointer',borderBottom:tab==='estatisticas'?'3px solid #ce93d8':'3px solid transparent'}}>
+        <button onClick={()=>setTab('estatisticas')} style={{flex:1,padding:'12px 4px',border:'none',background:'transparent',color:tab==='estatisticas'?'#fff':'#7a9ab0',fontSize:'0.78rem',fontWeight:700,cursor:'pointer',borderBottom:tab==='estatisticas'?'3px solid #ff3333':'3px solid transparent'}}>
           Ranking
         </button>
         <button onClick={()=>setTab('pagamentos')} style={{flex:1,padding:'12px 4px',border:'none',background:'transparent',color:tab==='pagamentos'?'#fff':'#7a9ab0',fontSize:'0.78rem',fontWeight:700,cursor:'pointer',borderBottom:tab==='pagamentos'?'3px solid #00c853':'3px solid transparent'}}>
